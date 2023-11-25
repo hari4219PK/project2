@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>project</title>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <style>
+        body {
+            background:#000;
+            padding: 0;
+            margin: 0;
+            height: 95.5vh;
+        }
+
+        :root {
+            --x: 45deg;
+        }
+
+        a {
+            color: #efefef;
+            height: 50px;
+            width: 150px;
+            display: inline-block;
+            text-decoration: none;
+            border-radius: 5px;
+            position: relative;
+            margin-top: 200px;
+            margin-left: 44%;
+            cursor: -webkit-grabbing;
+        }
+
+        a i {
+            position: absolute;
+            inset: -3px;
+            display: block;
+            border-radius: 5px;
+        }
+
+        a i,
+        a i:nth-child(2) {
+            background: linear-gradient(var(--x), #8c07eb, #07091a, #07091a, #ebb207);
+        }
+
+        i:nth-child(2) {
+            filter: blur(20px);
+        }
+
+        a span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(7, 9, 26, .46);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: .5px solid rgba(7, 9, 26, 0.5);
+            overflow: hidden;
+        }
+
+        a span::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -50%;
+            width: 100%;
+            height: 100%;
+            background: rgba(117, 117, 117, 0.3);
+            transform: skew(25deg);
+        }
+
+        .blink {
+            color: white;
+            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="text-align: center;" class="blink">WELCOME</h1>
+
+    <a href="index1.html" id="button">
+        <i></i><i></i>
+        <span>Start game!</span>
+    </a>
+    <script>
+        let btn = document.getElementById('button');
+        btn.addEventListener('mousemove', e => {
+            let rect = e.target.getBoundingClientRect();
+            let x = e.clientX - rect.left;
+            btn.style.setProperty('--x', x + 'deg');
+        });
+        function blink_text() {
+            $('.blink').fadeOut(500);
+            $('.blink').fadeIn(500);
+        }
+        setInterval(blink_text, 1000);
+    </script>
+</body>
+
+</html>
+
+
+
